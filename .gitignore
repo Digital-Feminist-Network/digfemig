@@ -1,0 +1,11 @@
+~
+*.swp
+
+dist/*
+*/*.egg-info/*
+__pycache__
+
+session.json
+digfemig.log
+data
+digfemig.toml

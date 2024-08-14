@@ -1,0 +1,6 @@
+[settings]
+hashtag = "jdvancecouch"
+session_file = "/path/to/session.json"
+username = "my_username"
+password = "my_password"
+download_path = "/path/to/data"
