@@ -39,7 +39,7 @@ def download_media(hashtag, session_file, download_path, username, password):
 
         timestamp = time.strftime("%Y%m%d%H%M%S")
 
-        medias = cl.hashtag_medias_recent(hashtag, amount=100)
+        medias = cl.hashtag_medias_top(hashtag, amount=100)
 
         for i, media in enumerate(medias):
             # Grab images and video.

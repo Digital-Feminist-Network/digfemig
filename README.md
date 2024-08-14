@@ -1,6 +1,6 @@
 # digfemig
 
-Utility to collect media for Instagram hashtags for the [Digital Feminist Network](https://digfemnet.org/).
+A Python utility to collect up to the top 100 media for a given Instagram hashtag. This utility came out of a research need for the [Digital Feminist Network](https://digfemnet.org/).
 
 ## Requirements
 
