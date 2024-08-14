@@ -1,6 +1,4 @@
 import argparse
-import os
-import sys
 
 import tomli
 
@@ -9,7 +7,7 @@ from digfemig import collector, login
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="DigFemNet Instagram Bulk Collector")
-    parser.add_argument("config", help="Path to the digfemig.toml configuration file")
+    parser.add_argument("config", help="Path to the TOML configuration file")
     return parser.parse_args()
 
 
@@ -20,11 +18,8 @@ def read_config(file_path):
 
 
 def main():
-    config = read_config("digfemig.toml")
-
-
-def main():
-    config = read_config("digfemig.toml")
+    args = parse_arguments()
+    config = read_config(args.config)
 
     # Extract settings from the config.
     hashtag = config.get("settings", {}).get("hashtag", "")
