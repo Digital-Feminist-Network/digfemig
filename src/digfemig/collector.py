@@ -35,7 +35,7 @@ def download_media(hashtag, session_file, download_path, username, password):
         csvwriter = csv.writer(csvfile)
 
         if os.stat(csv_file_path).st_size == 0:
-            csvwriter.writerow(["file_name", "username", "post_url"])
+            csvwriter.writerow(["file_name", "username", "post_url", "caption"])
 
         timestamp = time.strftime("%Y%m%d%H%M%S")
 
@@ -53,6 +53,7 @@ def download_media(hashtag, session_file, download_path, username, password):
                 media_path = os.path.join(download_path, media_filename)
                 post_url = f"https://www.instagram.com/p/{media.code}/"
                 ig_username = media.user.username
+                ig_caption = media.title
 
                 # Download the media.
                 if media.media_type == 1:
@@ -61,7 +62,7 @@ def download_media(hashtag, session_file, download_path, username, password):
                     cl.video_download_by_url(media.video_url, media_path)
 
                 # Write metadata.
-                csvwriter.writerow([media_filename, ig_username, post_url])
+                csvwriter.writerow([media_filename, ig_username, post_url, ig_caption])
 
                 image_url = media.thumbnail_url
                 image_path = os.path.join(
