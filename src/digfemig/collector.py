@@ -53,7 +53,7 @@ def download_media(hashtag, session_file, download_path, username, password):
                 media_path = os.path.join(download_path, media_filename)
                 post_url = f"https://www.instagram.com/p/{media.code}/"
                 ig_username = media.user.username
-                ig_caption = media.title
+                ig_caption = media.caption_text
 
                 # Download the media.
                 if media.media_type == 1:
