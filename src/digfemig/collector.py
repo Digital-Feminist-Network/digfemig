@@ -31,7 +31,7 @@ def download_media(hashtag, session_file, download_path, username, password):
     # Metadata file.
     csv_file_path = os.path.join(download_path, f"{hashtag}.csv")
 
-    with open(csv_file_path, "a", newline="") as csvfile:
+    with open(csv_file_path, "a", newline="", encoding='utf-8') as csvfile:
         csvwriter = csv.writer(csvfile)
 
         if os.stat(csv_file_path).st_size == 0:
