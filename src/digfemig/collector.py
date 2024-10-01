@@ -1,6 +1,7 @@
 import csv
 import json
 import os
+import random
 import time
 
 from instagrapi import Client
@@ -19,19 +20,23 @@ def setup_media_directory(download_path, hashtag):
     return full_path
 
 
+def nap_time():
+    time.sleep(random.uniform(1, 15))
+
+
 # Download media.
 def download_media(hashtag, session_file, download_path, username, password):
 
     cl = authenticate(session_file, username, password)
 
-    cl.delay_range = [1, 4]
+    cl.delay_range = [1, 15]
 
     cl.get_timeline_feed()
 
     # Metadata file.
     csv_file_path = os.path.join(download_path, f"{hashtag}.csv")
 
-    with open(csv_file_path, "a", newline="", encoding='utf-8') as csvfile:
+    with open(csv_file_path, "a", newline="", encoding="utf-8") as csvfile:
         csvwriter = csv.writer(csvfile)
 
         if os.stat(csv_file_path).st_size == 0:
@@ -42,6 +47,8 @@ def download_media(hashtag, session_file, download_path, username, password):
         medias = cl.hashtag_medias_top(hashtag, amount=100)
 
         for i, media in enumerate(medias):
+            nap_time()
+
             # Grab images and video.
             if media.media_type in {1, 2}:
                 padded_index = f"{i:04}"
