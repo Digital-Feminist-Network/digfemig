@@ -21,7 +21,7 @@ def setup_media_directory(download_path, hashtag):
 
 
 def nap_time():
-    time.sleep(random.uniform(1, 15))
+    time.sleep(random.uniform(1, 25))
 
 
 # Download media.
@@ -29,7 +29,7 @@ def download_media(hashtag, session_file, download_path, username, password):
 
     cl = authenticate(session_file, username, password)
 
-    cl.delay_range = [1, 15]
+    cl.delay_range = [1, 25]
 
     cl.get_timeline_feed()
 
